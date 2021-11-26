@@ -1,8 +1,5 @@
 (ns cartao-de-credito.logics.expends-by-category
-  (:require [cartao-de-credito.database.card-db :as c.d.card-db]
-            [cartao-de-credito.database.client-db :as c.d.client-db]
-            [cartao-de-credito.database.expends-db :as c.d.expends-db]))
-
+  (:require [cartao-de-credito.database.expends-db :as c.d.expends-db]))
 
 (defn total-expended
   [expends-details]
