@@ -10,8 +10,9 @@
   {:client-id client-id
    :cards-id (keep #( if(= client-id (:client-id %)) (:card-id %)) cards)})
 
-(def card-expends-per-month (->> (c.d.expends-db/all-expends)
-                                 c.l.expends-by-month/grouped-by-card))
+(defn card-expends-per-month []
+  (->> (c.d.expends-db/all-expends)
+       c.l.expends-by-month/grouped-by-card))
 
 (defn cards-by-clients []
   (->> (c.d.client-db/all-clients)
@@ -26,19 +27,28 @@
 
 (defn all-expends
   [cards-expends]
-  (apply concat (map :expends-by-month cards-expends)))
+  (apply concat (map :expends-per-month cards-expends)))
+
+(defn all-expends
+  [cards-expends]
+  (->> cards-expends
+       (map :expends-per-month)
+       (apply concat)))
 
 (defn client-expends-information!
   [card-id]
-  (first (filter #(= card-id (:card-id %)) card-expends-per-month)))
+  (->> (card-expends-per-month)
+       (filter #(= card-id (:card-id %)))
+       first))
 
 (defn client-expends-per-month
   [client]
-  {:client-id        (:client-id client)
-   :expends-by-month (sum-similar
-                       (all-expends (map client-expends-information! (:cards-id client)))
-                       :month
-                       :total-expended)})
+  (let [expends-per-month (->> client
+                               :cards-id
+                               (map client-expends-information!)
+                               all-expends)]
+    {:client-id         (:client-id client)
+     :expends-per-month (sum-similar expends-per-month :month :total-expended)}))
 
 (defn all-client-expends-per-month []
   (->> (cards-by-clients)

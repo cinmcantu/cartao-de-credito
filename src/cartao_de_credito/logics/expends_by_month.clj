@@ -24,9 +24,9 @@
 (defn grouped-by-month
   [[card-id expend-info]]
   {:card-id card-id
-   :expends-by-month (->> expend-info
-                          (group-by :expend-month)
-                          (map total-expends-by-month))})
+   :expends-per-month (->> expend-info
+                           (group-by :expend-month)
+                           (map total-expends-by-month))})
 
 (defn grouped-by-card
   [expends]
