@@ -27,10 +27,6 @@
 
 (defn all-expends
   [cards-expends]
-  (apply concat (map :expends-per-month cards-expends)))
-
-(defn all-expends
-  [cards-expends]
   (->> cards-expends
        (map :expends-per-month)
        (apply concat)))
