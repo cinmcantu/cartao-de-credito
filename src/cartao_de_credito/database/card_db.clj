@@ -35,5 +35,12 @@
                         :limit "5000.00"}
             :client-id "004"})
 
+(def card6 {:card-id "006"
+            :card-info {:number "5001 6666 6666 6666"
+                        :cvv "006"
+                        :exp-date "2029-12-25"
+                        :limit "2000.00"}
+            :client-id "005"})
+
 (defn all-cards []
-  [card1 card2 card3 card4 card5])
+  [card1 card2 card3 card4 card5 card6])

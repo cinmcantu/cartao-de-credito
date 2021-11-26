@@ -28,9 +28,13 @@
                           (group-by :expend-month)
                           (map total-expends-by-month))})
 
-(defn expends-grouped-by-card-by-month
+(defn grouped-by-card
   [expends]
   (->> expends
        (map expend-with-month)
        (group-by :card-id)
        (map grouped-by-month)))
+
+
+
+(println (grouped-by-card (c.d.expends-db/all-expends)))

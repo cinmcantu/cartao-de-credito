@@ -64,7 +64,28 @@
                             :date (t/date-time 2021 11 02 14 02 58)}
               :card-id "005"})
 
+(def expend10 {:expend-id "0000010"
+               :expend-info {:value 79.99
+                             :place "shell"
+                             :category "transport"
+                             :date (t/date-time 2021 12 23 14 02 58)}
+               :card-id "003"})
+
+(def expend11 {:expend-id "0000011"
+               :expend-info {:value 79.99
+                             :place "shell"
+                             :category "transport"
+                             :date (t/date-time 2021 11 23 14 02 58)}
+               :card-id "003"})
+(def expend12 {:expend-id "0000012"
+               :expend-info {:value 19.99
+                             :place "papelaria"
+                             :category "study"
+                             :date (t/date-time 2021 11 25 14 02 58)}
+               :card-id "006"})
+
 
 (defn all-expends []
   [expend1 expend2 expend3 expend4 expend5
-   expend6 expend7 expend8 expend9])
+   expend6 expend7 expend8 expend9 expend10
+   expend11 expend12])
