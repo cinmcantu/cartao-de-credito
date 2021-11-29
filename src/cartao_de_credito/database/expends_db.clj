@@ -9,7 +9,7 @@
               :card-id "001"})
 
 (def expend2 {:expend-id "0000002"
-              :expend-info {:value 40.00
+              :expend-info {:value 30.99
                             :place "ponto certo"
                             :category "transport"
                             :date (t/date-time 2021 11 20 13 15 58)}
