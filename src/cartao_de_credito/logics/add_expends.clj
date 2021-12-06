@@ -3,5 +3,10 @@
             [schema.core :as s]
             [clj-time.core :as t]))
 
-(defn add-expend
-  [client-list new-expend])
+(s/set-fn-validation! true)
+
+(s/defn add-expend :- c.m.expends/ClientExpendsList
+    [client-list :- c.m.expends/ClientExpendsList , new-expend :- c.m.expends/Expend]
+  (update-in client-list [:expend-list] #(conj % new-expend)))
+
+

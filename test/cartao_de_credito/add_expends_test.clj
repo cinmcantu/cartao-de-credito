@@ -6,6 +6,7 @@
   (:import (clojure.lang ExceptionInfo)))
 
 
+
 (deftest add-expend-test
   (let [empty-client-expends-list {:client-id   "001"
                                    :expend-list []}

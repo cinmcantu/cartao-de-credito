@@ -4,7 +4,7 @@
             [cartao-de-credito.database.expends-db :as c.d.expends-db])
   (:import (org.joda.time DateTime)))
 
-(def Expends
+(def Expend
   {:expend-id   s/Str
    :expend-info {:value    Double
                  :place    s/Str
@@ -12,7 +12,7 @@
                  :date     DateTime}
    :card-id s/Str})
 
-(def ExpendsList [Expends])
+(def ExpendsList [Expend])
 
 (def ClientExpendsList {:client-id s/Str
                         :expend-list ExpendsList})
