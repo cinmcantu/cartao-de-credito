@@ -19,16 +19,16 @@
 
 
 
-;(println (s/validate Expends {:expend-id "0000001"
-;                              :expend-info {:value 30.99
-;                                            :place "ifood"
-;                                            :category "restaurant"
-;                                            :date (t/date-time 2021 10 14 4 3 27)}
-;                              :card-id "001"}))
+;(println (s/validate Expend {:expend-id "0000001"
+;                             :expend-info {:value 30.99
+;                                           :place "ifood"
+;                                           :category "restaurant"
+;                                           :date (t/date-time 2021 10 14 4 3 27)}
+;                             :card-id "001"}))
 ;
 ;(println (s/validate ExpendsList (c.d.expends-db/all-expends)))
-;(println (s/validate ClientExpendsList {:client-id   "0001"
-;                                        :expend-list (c.d.expends-db/all-expends)})
+;(println (s/validate ClientExpendsList {}))
+;(println (s/validate Expend {}))
 
 
 

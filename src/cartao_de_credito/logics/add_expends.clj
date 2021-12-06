@@ -10,3 +10,7 @@
   (update-in client-list [:expend-list] #(conj % new-expend)))
 
 
+(s/defn list-client-expends
+  [client-id :- s/Str
+   all-client-expends-list :- [c.m.expends/ClientExpendsList]]
+  (first (filter #(= client-id (:client-id %)) all-client-expends-list)))
