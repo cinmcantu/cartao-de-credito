@@ -74,5 +74,37 @@
       (is (thrown? ExceptionInfo (list-client-expends "001" [{:client-id 1}]))))))
 
 
+(deftest expends-per-category-test
+  (let [client-expends-list
+        {:client-id   "001"
+         :expend-list [{:expend-id   "0000002"
+                        :expend-info {:value    30.99
+                                      :place    "ponto certo"
+                                      :category "transport"
+                                      :date     (t/date-time 2021 11 20 13 15 58)}
+                        :card-id     "004"}
+                       {:expend-id   "0000003"
+                        :expend-info {:value    50.00
+                                      :place    "Mc Donalds"
+                                      :category "food"
+                                      :date     (t/date-time 2021 12 01 13 15 58)}
+                        :card-id     "001"}]}]
+    (testing "List per category"
+      (is (= {"transport" [{:expend-id   "0000002"
+                            :expend-info {:value    30.99
+                                          :place    "ponto certo"
+                                          :category "transport"
+                                          :date     (t/date-time 2021 11 20 13 15 58)}
+                            :card-id     "004"}],
+              "food" [{:expend-id   "0000003"
+                       :expend-info {:value    50.00
+                                     :place    "Mc Donalds"
+                                     :category "food"
+                                     :date     (t/date-time 2021 12 01 13 15 58)}
+                       :card-id     "001"}]}
+             (expends-per-category (:expend-list client-expends-list)))))))
+
+
+
 
 

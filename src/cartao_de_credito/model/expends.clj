@@ -17,7 +17,7 @@
 (def ClientExpendsList {:client-id s/Str
                         :expend-list ExpendsList})
 
-
+(def ExpendsListPerCategory {s/Str [Expend]})
 
 ;(println (s/validate Expend {:expend-id "0000001"
 ;                             :expend-info {:value 30.99
